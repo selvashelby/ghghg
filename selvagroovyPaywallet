@@ -1,0 +1,29 @@
+node{
+   stage('Cusresult'){
+     cusresult='https://xnxxxxxxxxxx0.19.xom'
+     sh 'rm -rf y9project ; git clone https://x-token-auth:JmzuraEBFDv7sCLlNUdp@bitbucket.org/chandruk07/y9project.git'
+     sh 'sleep 3  && chmod 777 y9project'
+     }
+   stage('bujuk'){
+     def cwd = "/var/lib/jenkins/workspace/XXXX/y9project" 
+     sh "cd ${cwd} && rm -rf newapp.txt ; git init"
+     sh "cd ${cwd} && echo $cusresult > newapp.txt"
+     sh 'git config --global --add safe.directory /var/lib/jenkins/workspace/XXXX'
+     sh 'git config --global --add safe.directory /var/lib/jenkins/workspace/XXXX/y9project'
+     sh "cd ${cwd} && git add newapp.txt"
+     }
+   stage('fun'){
+     def cwd = "/var/lib/jenkins/workspace/XXXX/y9project" 
+     sh "cd ${cwd} && git config user.email 63cf8fa269c7ae3958d13cf7@bots.bitbucket.org"
+     }
+   stage('Remove Previous Container'){
+	 sh '''
+	 if cd /var/lib/jenkins/workspace/XXXX/y9project && git commit -a -m "Commit message"
+     then
+        cd /var/lib/jenkins/workspace/XXXX/y9project && git remote add orgin https://x-token-auth:UZQGSUWa4sHRUCCXeExi@bitbucket.org/chandruk07/bujuk.git ; git push
+        rm -rf y9project
+     else
+        echo "hi"
+     fi
+     '''}
+   }
